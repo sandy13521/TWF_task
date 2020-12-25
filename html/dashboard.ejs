@@ -9,6 +9,12 @@
 
 <body>
     <h1>THIS IS DASHBOARD</h1>
+    <% for(let i = 0;i < head.length; i++){ %>
+        <h2>
+            <%= head[i] %> :
+                <%= data[i] %>
+        </h2>
+        <%} %>
 </body>
 
 </html>

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sandy13521/TWF_task#readme",
   "dependencies": {
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
     "firebase": "^8.2.1",
     "path": "^0.12.7"

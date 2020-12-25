@@ -5,6 +5,7 @@ const path = require("path");
 const { request } = require("http");
 const { response } = require("express");
 const { dir } = require("console");
+const { type } = require("os");
 const app = express();
 let port = process.env.PORT || 9876;
 
@@ -33,7 +34,7 @@ app.post("/login", (request, response) => {
             let database = firebase.database();
             database.ref().child("users").child(user.uid).once('value').then((snapshot) => {
                 if (snapshot.exists()) {
-                    response.sendFile("./html/dashboard.html", { root: __dirname });
+                    response.redirect("/dashboard");
                 } else {
                     response.sendFile("./html/get_details.html", { root: __dirname });
                 }
@@ -87,7 +88,33 @@ app.post("/add_details", (request, response) => {
                 console.log(error.message);
                 console.log("DATABASE ERROR");
             });
-            response.sendFile("./html/dashboard.html", { root: __dirname });
+            response.redirect('/dashboard');
+        } else {
+            response.redirect('/');
+        }
+    });
+});
+
+app.get('/dashboard', (request, response) => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            let database = firebase.database();
+            const data = [];
+            const head = [];
+            database.ref().child("users").child(user.uid).once('value').then(function(snapshot) {
+                head.push('DOB');
+                data.push(snapshot.val()['dob']);
+                head.push('Address');
+                data.push(snapshot.val()['address']);
+                head.push('Place Of Birth');
+                data.push(snapshot.val()['placeofbirth']);
+                response.render(path.resolve('./html/dashboard'), {
+                    data: data,
+                    head: head
+                });
+            }).catch(error => {
+                console.log(error.message);
+            })
         } else {
             response.redirect('/');
         }
