@@ -18,6 +18,13 @@ app.get("/", (request, response) => {
     response.sendFile('./html/home.html', { root: __dirname });
 });
 
+// Sign Out Link
+app.get("/signout", (request, response) => {
+    firebase.auth().signOut();
+    response.redirect('/');
+
+});
+
 //Login Page
 app.get("/login", (request, response) => {
     response.sendFile('./html/login.html', { root: __dirname });
@@ -69,6 +76,7 @@ app.post("/signup", (request, response) => {
     }
 });
 
+// Adding Details to the Database.
 app.post("/add_details", (request, response) => {
     let dob = request.body.dob;
     let place_of_birth = request.body.placeofbirth;
@@ -95,6 +103,7 @@ app.post("/add_details", (request, response) => {
     });
 });
 
+// Dashboard
 app.get('/dashboard', (request, response) => {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
