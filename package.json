@@ -1,25 +1,26 @@
 {
-  "name": "task",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sandy13521/TWF_task.git"
-  },
-  "author": "SANDEEP N S",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sandy13521/TWF_task/issues"
-  },
-  "homepage": "https://github.com/sandy13521/TWF_task#readme",
-  "dependencies": {
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "firebase": "^8.2.1",
-    "path": "^0.12.7"
-  }
+    "name": "task",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sandy13521/TWF_task.git"
+    },
+    "author": "SANDEEP N S",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sandy13521/TWF_task/issues"
+    },
+    "homepage": "https://github.com/sandy13521/TWF_task#readme",
+    "dependencies": {
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "firebase": "^8.2.1",
+        "path": "^0.12.7"
+    }
 }
